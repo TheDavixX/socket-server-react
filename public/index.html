@@ -12,58 +12,16 @@
     </head>
     <body class="container">
         
-        <h1 class="mt-5">MiniChat</h1>
+        <h1 class="mt-5">Accseso denegado</h1>
         <hr />
-
-        <form id="myForm">
-            <div class="row">
-                <div class="col-8">
-
-                    <input 
-                        type="text" 
-                        id="txtMensaje" 
-                        placeholder="Type some text" 
-                        class="form-control" />
-
-                </div>
-                <div class="col-4">
-                    <button type="submit" class="btn btn-primary">
-                        Send
-                    </button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8">
-
-                    <ul id="txtMensajes" class="mt-2">
-                        <li>Hola</li>
-                        <li>Mundo</li>
-                        <li>David</li>
-                    </ul>
-                </div>
-            </div>
-        </form>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
 
-            const socket = io('https://react-socket-david.herokuapp.com/');
-            
-            const form = document.querySelector("#myForm");
-            const msgList = document.querySelector("#txtMensajes");
-            const txtMsg = document.querySelector("#txtMensaje");
-
-            form.addEventListener('submit', (ev) => {
-                ev.preventDefault();
-
-                const nuevoMensaje = txtMsg.value
-                console.log(nuevoMensaje)
-                socket.emit('mensaje-to-server', { texto: nuevoMensaje })
-
-            })
+            const socket = io('http://localhost:8080');
 
             socket.on('mensaje-from-server', (data) => {
-                msgList.innerHTML += `<li>${data.texto}</li>`
+                
             })
 
         </script>
